@@ -20,3 +20,9 @@ change the directory permission
 Server side
 # cd /var/repo
 # git clone /opt/git-repo/TomcatCluster.git
+
+change remote url
+# git remote set-url [remote-name] [new-url]
+e.g.
+# git remote set-url server ssh://jfang@192.168.1.193/opt/git-repo/TomcatCluster.git
+# git remote -v
