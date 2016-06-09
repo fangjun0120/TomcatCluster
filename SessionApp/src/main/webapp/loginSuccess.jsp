@@ -20,12 +20,8 @@
     else {
         user = (String) session.getAttribute("user");
     }
-
-    ServletContext sc = request.getServletContext();
-    String serverInfo = sc.getServerInfo();
 %>
     <h3>Hi <%=user %>, Login successful.</h3>
-    <p>server: <%=serverInfo %></p>
 
     <p>Checkout Page</p>
     <form action="LogoutServlet" method="post">

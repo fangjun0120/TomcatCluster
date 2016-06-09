@@ -58,3 +58,7 @@ change the owner of the directories:
 Start service now:
 # service tomcat8-a start
 # service tomcat8-b start
+
+add log location for each instance
+add a property entry in $CATALINA_BASE/conf/catalina.properties
+log.location=/var/log/tomcat8-cluster/tomcat8-a
