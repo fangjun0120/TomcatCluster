@@ -1,0 +1,22 @@
+# sudo apt-get install git
+add git user
+# user git
+# passwd: gituser
+restrict the 'git' user to only doing Git activities
+git:x:1000:1000::/home/git:/usr/bin/git-shell
+
+create a bare repository on server
+# sudo git init --bare /opt/git-repo/TomcatCluster.git
+create a local working copy
+# cd ~
+# git clone /opt/git-repo/TomcatCluster.git
+change the directory permission
+# sudo chmod -R g+ws *
+# sudo chgrp -R git *
+
+# git remote add server ssh://jfang@[host IP]/opt/git-repo/TomcatCluster.git
+# git push server master
+
+Server side
+# cd /var/repo
+# git clone /opt/git-repo/TomcatCluster.git

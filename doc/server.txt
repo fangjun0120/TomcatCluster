@@ -1,0 +1,19 @@
+server commands
+
+change tomcat JVM path
+# sudo vim /etc/default/tomcat8
+
+restart server
+# sudo service tomcat8-a restart
+# sudo service tomcat8-b restart
+
+update build script
+# sudo scp build.sh [user]@[host IP]:/home/[user]/script
+or use the script from git repository
+
+build and deploy
+# sudo bash build.sh
+
+app URL
+http://[host IP]:8180/red-envelope/login
+http://[host IP]:8280/red-envelope/login

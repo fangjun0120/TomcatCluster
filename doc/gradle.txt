@@ -1,0 +1,10 @@
+install gradle
+
+# cd /var/vendor/
+# wget https://services.gradle.org/distributions/gradle-2.13-bin.zip
+# unzip gradle-2.13-bin.zip
+
+start a java project
+# mkdir SessionApp
+# cd SessionApp
+# gradle init --type java-library

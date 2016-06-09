@@ -1,0 +1,68 @@
+nginx
+
+# sudo apt-get install nginx
+test install
+# sudo service nginx status
+welcome page
+http://[host IP]
+
+default server root
+/var/www/html
+
+configuration
+main configure file:
+/etc/nginx/nginx.conf
+
+/etc/nginx/conf.d
+used for site configuration
+every file ending with .conf is red into the configuration when Nginx is started
+
+configure files are created in:
+/etc/nginx/sites-available
+and then symbolically linked to:
+/etc/nginx/sites-enabled
+files in sites-enabled directory will be loaded
+
+
+a tree-like structure, defined by sets of brackets
+directive inheritance
+a declaration in a broader context will be passed on to any child contexts
+children contexts can override these values
+
+events context
+used to set global options to handle connections at a general level
+
+http context
+to define how to handle http or https connections
+
+server context
+with http context
+possible to have multiple server block
+each client request will be handled according to the server context
+- listen
+the ip and port combination that this server is designed to response to
+- server_name
+other component use to select a server
+
+location context
+with server context
+each location is used to handle a certain type of client request
+divide up the request by looking at the request URI
+
+upstream context
+with http context
+used to define and configure upstream servers
+define a nemed pool of servers
+- server
+
+algorithm to determine which server to handle
+round-robin by default
+
+mail context
+as a mail proxy server
+
+create a config file /etc/nginx/sites-available/tomcat.conf
+and create a link
+$ ln -s /etc/nginx/sites-available/tomcat.conf /etc/nginx/sites-enabled/tomcat
+$ service nginx restart
+http://[host IP]

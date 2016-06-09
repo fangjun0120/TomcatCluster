@@ -1,0 +1,10 @@
+java install
+
+download jdk and copy to server
+# sudo scp jdk-8u91-linux-x64.tar.gz [user]@[host IP]:/home/[user]
+
+follow the reference
+https://wiki.debian.org/JavaPackage
+
+change from different java version
+# update-alternatives --config java

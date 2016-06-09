@@ -1,0 +1,60 @@
+isntall and configure tomcat8
+
+# sudo apt-get install tomcat8
+catalina home:
+/usr/share/tomcat8
+# sudo service tomcat8 start / stop
+catalina base:
+/var/lib/tomcat8
+configures:
+/etc/tomcat8
+
+$CATALINA_HOME
+$CATALINA_BASE, home for each instance
+directories
+/bin, /conf, /logs, /webapps
+
+Deployment
+statically, setup before server is started
+dynamically, directly manipulate already deployed apps
+autoDeploy = true
+
+Context descriptors
+$CATALINA_BASE/conf/[enginename]/[hostname]/[webappname].xml
+$CATALINA_BASE/webapps/[webappname]/META-INF/context.xml
+
+Create multiple instances
+# apt-get install tomcat8-user
+# cd /opt
+# tomcat8-instance-create tomcat8-a
+# tomcat8-instance-create tomcat8-b
+
+Change the ports in server.xml:
+Tomcat8-a:
+Shutdown:8105, HTTP:8180
+Tomcat8-b:
+Shutdown:8205, HTTP:8280
+
+Config start service
+$ cd /etc/init.d
+$ sudo cp tomcat8 tomcat8-a
+$ sudo cp tomcat8 tomcat8-b
+Change values: (same with b by replacing a with b)
+Provides: tomcat8-a (even this line marked as commet)
+NAME=tomcat8-a
+DESC=”Tomcat servlet engine instance A”
+DEFAULT=/etc/default/tomcat8
+CATALINA_HOME=usr/share/tomcat8
+CATALINA_BASE=/opt/tomcat8-a
+
+Still missing the policy files:
+# sudo cp -r /var/lib/tomcat8/conf/policy.d /opt/tomcat8-a/conf
+# sudo cp -r /var/lib/tomcat8/conf/policy.d /opt/tomcat8-b/conf
+
+change the owner of the directories:
+# sudo chown -R tomcat8 tomcat8-a
+# sudo chown -R tomcat8 tomcat8-b
+
+Start service now:
+# service tomcat8-a start
+# service tomcat8-b start
